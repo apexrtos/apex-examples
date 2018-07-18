@@ -1,0 +1,9 @@
+[submodule "apex"]
+	path = apex
+	url = git:/git/apex
+[submodule "toybox/src"]
+	path = toybox/src
+	url = https://github.com/landley/toybox.git
+[submodule "busybox/src"]
+	path = busybox/src
+	url = git://busybox.net/busybox.git
