@@ -1,0 +1,11 @@
+A simple demonstration of the capabilities of the build system.
+
+The example program is mixed C/C++ and links against two libraries. lib1 is in
+the top level source directory and lib2 is local to the example program.
+
+The example program is included in the shell build, however, for development we
+support building individual targets, for example, from a clean state:
+
+make example_program/lib2/lib2.a	# will build just lib2.a
+make example_program/example_program	# will build lib1.a and example_program
+make lib1/lib1.a			# will do nothing as lib1.a is up to date

@@ -1,12 +1,14 @@
 #
 # Compiler
 #
-makeoption CFLAGS += -g
-makeoption CFLAGS += -pipe
-makeoption CFLAGS += -Wall
-makeoption CFLAGS += -O2
-makeoption CFLAGS += -flto -fuse-linker-plugin
-makeoption CFLAGS += -Xlinker --gc-sections
+makeoption COMMON_FLAGS += -g
+makeoption COMMON_FLAGS += -pipe
+makeoption COMMON_FLAGS += -Wall
+makeoption COMMON_FLAGS += -O2
+makeoption COMMON_FLAGS += -flto -fuse-linker-plugin
+makeoption COMMON_FLAGS += -Xlinker --gc-sections
+makeoption CFLAGS += $(CONFIG_COMMON_FLAGS)
+makeoption CXXFLAGS += $(CONFIG_COMMON_FLAGS)
 makeoption SSTRIP := y
 
 #
@@ -51,6 +53,7 @@ imagefile sys/apex				# APEX kernel,
 imagefile shell/init				# init script,
 imagefile toybox/toybox				# toybox userspace tools and
 imagefile busybox/busybox			# busybox shell and
-imagefile hello_world/hello_world		# hello world
+imagefile hello_world/hello_world		# hello_world and
+imagefile example_program/example_program	# example_program
 option BOOTDEV /dev/bootdisk0
 option INITCMD /boot/init
