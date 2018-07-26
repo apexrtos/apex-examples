@@ -1,7 +1,8 @@
-#!/boot/busybox
+#!/boot/busybox sh
 
 /boot/toybox mkdir /bin
-/boot/toybox ln -s /boot/busybox /bin/busybox
-for i in $(/boot/toybox); do /boot/toybox ln -s /boot/toybox /bin/$i; done
-ln -s /boot/busybox /bin/sh
+/boot/toybox ln -s /boot/toybox /bin/toybox
+toybox ln -s /boot/busybox /bin/busybox
+for i in $(toybox); do toybox ln -s /boot/toybox /bin/$i; done
+for i in $(busybox --list); do ln -s /boot/busybox /bin/$i; done
 exec oneit -c /dev/ttyS0 sh
