@@ -1,7 +1,10 @@
 #include "custom_driver.h"
 
+#include "ioctl.h"
 #include <assert.h>
+#include <debug.h>
 #include <device.h>
+#include <errno.h>
 #include <fs/file.h>
 #include <fs/util.h>
 #include <string.h>
@@ -46,6 +49,20 @@ write_iov(struct file *file, const struct iovec *iov, size_t count)
 }
 
 /*
+ * Example ioctl
+ */
+int custom_driver_ioctl(struct file *file, u_long cmd, void *arg)
+{
+	switch (cmd) {
+	case CUSTOM_DRIVER_IOC_TEST:
+		info("custom_driver_ioctl test %d\n", *(int *)arg);
+		return 0;
+	default:
+		return DERR(-EINVAL);
+	};
+}
+
+/*
  * Initialize
  */
 void
@@ -54,6 +71,7 @@ custom_driver_init(const char *str)
 	static struct devio io = {
 		.read = read_iov,
 		.write = write_iov,
+		.ioctl = custom_driver_ioctl,
 	};
 	data = str;
 	data_len = strlen(str);
