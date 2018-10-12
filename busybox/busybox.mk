@@ -7,7 +7,7 @@ TARGET := busybox
 
 busybox_CFLAGS := $(CFLAGS) $(CONFIG_USER_CFLAGS)
 
-busybox/.config: $(CONFIG_SRCDIR)/busybox/config | $(CURDIR)/busybox/
+busybox/.config: $(CONFIG_SRCDIR)/busybox/config conf/config.mk| $(CURDIR)/busybox/
 	cp $< $@
 ifeq ($(origin CONFIG_MMU),undefined)
 	echo "CONFIG_NOMMU=y" >> $@
@@ -21,7 +21,7 @@ busybox/.copied:
 	cp -rs $(CONFIG_SRCDIR)/busybox/src/* busybox
 	touch $@
 
-busybox/busybox: force busybox/.config busybox/.copied
+busybox/busybox: busybox/.config busybox/.copied
 	MAKEFLAGS="$(_MFLAGS)" $(MAKE) -C busybox AR=gcc-ar $(SHUTUP_IF_SILENT)
 ifneq ($(CONFIG_SSTRIP),)
 	sstrip $@

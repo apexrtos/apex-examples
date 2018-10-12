@@ -7,7 +7,7 @@ TARGET := toybox
 
 toybox_CFLAGS := $(CFLAGS) $(CONFIG_USER_CFLAGS)
 
-toybox/.config: $(CONFIG_SRCDIR)/toybox/config | $(CURDIR)/toybox/
+toybox/.config: $(CONFIG_SRCDIR)/toybox/config conf/config.mk | $(CURDIR)/toybox/
 	cp $< $@
 ifeq ($(origin CONFIG_MMU),undefined)
 	echo "# CONFIG_TOYBOX_FORK is not set" >> $@
@@ -19,7 +19,7 @@ toybox/.copied:
 	cp -rs $(CONFIG_SRCDIR)/toybox/src/* toybox
 	touch $@
 
-toybox/toybox: force toybox/.config toybox/.copied
+toybox/toybox: toybox/.config toybox/.copied
 	$(MAKE) -C toybox \
 		CFLAGS="$(toybox_CFLAGS) -Wundef -Wno-char-subscripts" \
 		CROSS_COMPILE="$(CROSS_COMPILE)" $(SHUTUP_IF_SILENT)
