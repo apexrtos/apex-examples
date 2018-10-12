@@ -1,6 +1,6 @@
-#
-# Compiler
-#
+/*
+ * Compiler
+ */
 makeoption COMMON_FLAGS += -g
 makeoption COMMON_FLAGS += -pipe
 makeoption COMMON_FLAGS += -Wall
@@ -12,49 +12,49 @@ makeoption CXXFLAGS += $(CONFIG_COMMON_FLAGS)
 makeoption USER_CFLAGS += -z stack-size=16384
 makeoption SSTRIP := y
 
-#
-# Debugging
-#
+/*
+ * Debugging
+ */
 option SYSLOG_SIZE	    4096
-#option DEBUG		    # Print debug messages and turn on debug checks
-option INFO		    # Print informative messages
-#option EARLY_CONSOLE	    # Enable early console for debug output
-#option BOOT_CONSOLE	    # Enable boot console for debug output
-option CONSOLE		    # Enable console
-#option PRINTF_FLOAT	    # Kernel support for printing floats
-#option PRINTF_WCHAR	    # Kernel support for printing wchar_t
-#option KSTACK_CHECK	    # Kernel stack checking
-#option KMEM_CHECK	    # Kernel memory checking
-#option THREAD_CHECK	    # Kernel thread checking
+// option DEBUG		    // Print debug messages and turn on debug checks
+option INFO		    // Print informative messages
+// option EARLY_CONSOLE	    // Enable early console for debug output
+// option BOOT_CONSOLE	    // Enable boot console for debug output
+option CONSOLE		    // Enable console
+// option PRINTF_FLOAT	    // Kernel support for printing floats
+// option PRINTF_WCHAR	    // Kernel support for printing wchar_t
+// option KSTACK_CHECK	    // Kernel stack checking
+// option KMEM_CHECK	    // Kernel memory checking
+// option THREAD_CHECK	    // Kernel thread checking
 option CONSOLE_LOGLEVEL	    (LOG_DEBUG)
 option CONSOLE_CFLAG	    (B115200 | CS8 | CREAD)
 
-#
-# Operating system version
-#
+/*
+ * Operating system version
+ */
 option UNAME_VERSION	    (__TIMESTAMP__" shell")
 
-#
-# Device drivers
-#
-driver sys/dev/bootdisk()    # Boot disk
+/*
+ * Device drivers
+ */
+driver sys/dev/bootdisk()    // Boot disk
 driver custom_driver("Custom driver test\n")
 
-#
-# Filesystems
-#
-filesystem sys/fs/arfs	    # Archive file system
+/*
+ * Filesystems
+ */
+filesystem sys/fs/arfs	    // Archive file system
 
-#
-# Boot image configuration
-#
-option BOOTABLE_IMAGE				# Build bootable image
-option BOOTFS arfs				# in archive format, including
-imagefile sys/apex				# APEX kernel,
-imagefile shell/init				# init script,
-imagefile toybox/toybox				# toybox userspace tools and
-imagefile busybox/busybox			# busybox shell and
-imagefile hello_world/hello_world		# hello_world and
-imagefile example_program/example_program	# example_program
+/*
+ * Boot image configuration
+ */
+option BOOTABLE_IMAGE				// Build bootable image
+option BOOTFS arfs				// in archive format, including
+imagefile sys/apex				// APEX kernel,
+imagefile shell/init				// init script,
+imagefile toybox/toybox				// toybox userspace tools and
+imagefile busybox/busybox			// busybox shell and
+imagefile hello_world/hello_world		// hello_world and
+imagefile example_program/example_program	// example_program
 option BOOTDEV /dev/bootdisk0
 option INITCMD /boot/init
