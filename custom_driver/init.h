@@ -1,5 +1,5 @@
-#ifndef custom_driver_h
-#define custom_driver_h
+#ifndef custom_driver_init_h
+#define custom_driver_init_h
 
 /*
  * A minimal example of a custom driver.
