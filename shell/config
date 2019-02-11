@@ -52,9 +52,10 @@ option BOOTABLE_IMAGE				// Build bootable image
 option BOOTFS arfs				// in archive format, including
 imagefile sys/apex				// APEX kernel,
 imagefile shell/init				// init script,
-imagefile toybox/toybox				// toybox userspace tools and
-imagefile busybox/busybox			// busybox shell and
-imagefile hello_world/hello_world		// hello_world and
+imagefile toybox/toybox				// toybox userspace tools,
+imagefile busybox/busybox			// busybox shell,
+imagefile hello_world/hello_world		// hello_world,
+imagefile usbg/usbg				// USB gadget configurator,
 imagefile example_program/example_program	// example_program
 option BOOTDEV /dev/bootdisk0
 option INITCMD /boot/init

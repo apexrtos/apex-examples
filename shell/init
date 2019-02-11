@@ -5,4 +5,10 @@
 toybox ln -s /boot/busybox /bin/busybox
 for i in $(toybox); do toybox ln -s /boot/toybox /bin/$i; done
 for i in $(busybox --list); do ln -s /boot/busybox /bin/$i; done
+if [ -e /dev/usbgadget ]; then
+	boot/usbg set_device_descriptor udc0 239 2 1 0x1209 0x0001 0x0001 APEX "APEX USB Gadget (for testing only: http://pid.codes/1209/0001/)" 1
+	boot/usbg add_configuration udc0 config1 "Serial Port" 0xc0 0
+	boot/usbg add_function udc0 config1 cdc_acm "dev=ttyGS0 function=\"Serial Console\""
+	boot/usbg start udc0
+fi
 exec oneit -c /dev/ttyS0 sh
