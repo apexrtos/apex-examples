@@ -15,7 +15,7 @@ else
 	echo "# CONFIG_NOMMU is not set" >> $@
 endif
 	echo "CONFIG_CROSS_COMPILER_PREFIX=\"$(CROSS_COMPILE)\"" >> $@
-	echo "CONFIG_EXTRA_CFLAGS=\"$(busybox_CFLAGS) -Os\"" >> $@
+	echo "CONFIG_EXTRA_CFLAGS=\"$(busybox_CFLAGS)\"" >> $@
 
 busybox/.copied:
 	cp -rs $(CONFIG_SRCDIR)/busybox/src/* busybox
