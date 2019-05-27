@@ -48,14 +48,21 @@ filesystem sys/fs/arfs	    // Archive file system
 /*
  * Boot image configuration
  */
-option BOOTABLE_IMAGE				// Build bootable image
-option BOOTFS arfs				// in archive format, including
-imagefile sys/apex				// APEX kernel,
-imagefile shell/init				// init script,
-imagefile toybox/toybox				// toybox userspace tools,
-imagefile busybox/busybox			// busybox shell,
-imagefile hello_world/hello_world		// hello_world,
-imagefile usbg/usbg				// USB gadget configurator,
-imagefile example_program/example_program	// example_program
+build apex/bootimg				// Build executable boot image
+bootimgfile apex/boot/boot			// containing boot loader,
+bootimgfile apex/sys/apex			// apex kernel
+bootimgfile apex/bootarchive			// and boot archive
+option BOOT_ARCHIVE_TYPE a			// of type '.a' containing
+bootfile shell/init				// init script,
+bootfile toybox/toybox				// toybox userspace tools,
+bootfile busybox/busybox			// busybox shell,
+bootfile hello_world/hello_world		// hello_world,
+bootfile usbg/usbg				// USB gadget configurator,
+bootfile example_program/example_program	// example_program
+
+/*
+ * Kernel boot configuration
+ */
 option BOOTDEV /dev/bootdisk0
+option BOOTFS arfs
 option INITCMD /boot/init
