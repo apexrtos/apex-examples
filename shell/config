@@ -37,7 +37,7 @@ option UNAME_VERSION	    (__TIMESTAMP__" shell")
 /*
  * Device drivers
  */
-driver sys/dev/bootdisk()    // Boot disk
+driver sys/dev/bootdisk(bootargs)		// Boot disk
 driver custom_driver("Custom driver test\n")
 
 /*
