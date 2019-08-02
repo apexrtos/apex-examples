@@ -20,7 +20,7 @@ toybox/.copied:
 	touch $@
 
 toybox/toybox: toybox/.config toybox/.copied
-	$(MAKE) -C toybox \
+	$(MAKE) -j1 -C toybox \
 		CFLAGS="$(toybox_CFLAGS) -Wundef -Wno-char-subscripts" \
 		CROSS_COMPILE="$(CROSS_COMPILE)" $(SHUTUP_IF_SILENT)
 	chmod 755 $@
