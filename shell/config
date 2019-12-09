@@ -18,9 +18,9 @@ makeoption SSTRIP := y
 option SYSLOG_SIZE	    4096
 option DEBUG		    // Print debug messages and turn on debug checks
 option INFO		    // Print informative messages
-// option EARLY_CONSOLE	    // Enable early console for debug output
 // option BOOT_CONSOLE	    // Enable boot console for debug output
-option CONSOLE		    // Enable console
+option EARLY_CONSOLE	    // Enable early boot console for debug output
+option EARLY_CONSOLE_CFLAG  (B115200 | CS8)
 // option PRINTF_FLOAT	    // Kernel support for printing floats
 // option PRINTF_WCHAR	    // Kernel support for printing wchar_t
 // option KSTACK_CHECK	    // Kernel stack checking
@@ -39,6 +39,7 @@ option UNAME_VERSION	    (__TIMESTAMP__" shell")
  */
 driver sys/dev/bootdisk(bootargs)		// Boot disk
 driver custom_driver("Custom driver test\n")
+driver99 sys/dev/console("/dev/ttyS0", B115200 | CS8 | CREAD);
 
 /*
  * Filesystems
