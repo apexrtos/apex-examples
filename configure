@@ -12,7 +12,8 @@ ERRORMSG
 a="/$0"; a=${a%/*}; a=${a:-.}; a=${a#/}/; srcdir=$(cd "$a" && pwd)
 builddir=$(pwd)
 
-[ "$srcdir" = "$builddir" ] &&
+case $(readlink -f "$builddir")/ in $(readlink -f "$srcdir")/*)
 	quit "in-tree build not supported"
+esac
 
 "$srcdir/apex/configure" --srcdir=.. "$@"
