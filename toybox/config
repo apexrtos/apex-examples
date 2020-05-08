@@ -34,7 +34,7 @@ CONFIG_MV=y
 # CONFIG_INSTALL is not set
 # CONFIG_CPIO is not set
 # CONFIG_CUT is not set
-# CONFIG_DATE is not set
+CONFIG_DATE=y
 # CONFIG_DF is not set
 # CONFIG_DIRNAME is not set
 # CONFIG_DU is not set
@@ -68,7 +68,7 @@ CONFIG_MKDIR=y
 # CONFIG_NICE is not set
 # CONFIG_NL is not set
 # CONFIG_NOHUP is not set
-# CONFIG_OD is not set
+CONFIG_OD=y
 # CONFIG_PASTE is not set
 # CONFIG_PATCH is not set
 # CONFIG_PRINTF is not set
@@ -86,9 +86,8 @@ CONFIG_SLEEP=y
 # CONFIG_SORT is not set
 # CONFIG_SORT_FLOAT is not set
 # CONFIG_SPLIT is not set
-# CONFIG_STRINGS is not set
+CONFIG_STRINGS=y
 # CONFIG_TAIL is not set
-# CONFIG_TAIL_SEEK is not set
 # CONFIG_TAR is not set
 # CONFIG_TEE is not set
 # CONFIG_TEST is not set
@@ -97,15 +96,15 @@ CONFIG_TOUCH=y
 # CONFIG_TRUE is not set
 # CONFIG_TTY is not set
 # CONFIG_ULIMIT is not set
+# CONFIG_ARCH is not set
 CONFIG_UNAME=y
 # CONFIG_UNIQ is not set
 # CONFIG_UNLINK is not set
 # CONFIG_UUDECODE is not set
 # CONFIG_UUENCODE is not set
-# CONFIG_WC is not set
+CONFIG_WC=y
 # CONFIG_WHO is not set
 # CONFIG_XARGS is not set
-# CONFIG_XARGS_PEDANTIC is not set
 
 #
 # pending (see toys/pending/README)
@@ -205,7 +204,7 @@ CONFIG_UNAME=y
 # CONFIG_HELP is not set
 # CONFIG_HELP_EXTRAS is not set
 # CONFIG_HEXEDIT is not set
-# CONFIG_HWCLOCK is not set
+CONFIG_HWCLOCK=y
 # CONFIG_I2CDETECT is not set
 # CONFIG_I2CDUMP is not set
 # CONFIG_I2CGET is not set
@@ -246,7 +245,7 @@ CONFIG_ONEIT=y
 # CONFIG_REV is not set
 # CONFIG_RMMOD is not set
 # CONFIG_SETFATTR is not set
-# CONFIG_SETSID is not set
+CONFIG_SETSID=y
 # CONFIG_SHRED is not set
 # CONFIG_STAT is not set
 # CONFIG_SWAPOFF is not set
@@ -256,7 +255,7 @@ CONFIG_ONEIT=y
 # CONFIG_TAC is not set
 # CONFIG_NPROC is not set
 # CONFIG_TASKSET is not set
-# CONFIG_TIMEOUT is not set
+CONFIG_TIMEOUT=y
 # CONFIG_TRUNCATE is not set
 # CONFIG_UPTIME is not set
 # CONFIG_USLEEP is not set
@@ -292,6 +291,7 @@ CONFIG_DMESG=y
 # CONFIG_GUNZIP is not set
 # CONFIG_ZCAT is not set
 # CONFIG_HOSTNAME is not set
+# CONFIG_DNSDOMAINNAME is not set
 # CONFIG_KILLALL is not set
 CONFIG_MD5SUM=y
 # CONFIG_SHA1SUM is not set
@@ -328,16 +328,12 @@ CONFIG_UMOUNT=y
 # Android
 #
 # CONFIG_GETENFORCE is not set
-# CONFIG_GETPROP is not set
 # CONFIG_LOAD_POLICY is not set
 # CONFIG_LOG is not set
 # CONFIG_RESTORECON is not set
 # CONFIG_RUNCON is not set
 # CONFIG_SENDEVENT is not set
 # CONFIG_SETENFORCE is not set
-# CONFIG_SETPROP is not set
-# CONFIG_START is not set
-# CONFIG_STOP is not set
 
 #
 # 
