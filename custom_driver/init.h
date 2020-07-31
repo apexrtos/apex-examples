@@ -11,6 +11,14 @@
  * cat /dev/custom
  */
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 void custom_driver_init(const char *);
+
+#ifdef __cplusplus
+} /* extern "C" */
+#endif
 
 #endif
