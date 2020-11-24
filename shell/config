@@ -10,7 +10,6 @@ makeoption COMMON_FLAGS += -Xlinker --gc-sections
 makeoption CFLAGS += $(CONFIG_COMMON_FLAGS)
 makeoption CXXFLAGS += $(CONFIG_COMMON_FLAGS)
 makeoption USER_CFLAGS += -z stack-size=16384
-makeoption SSTRIP := y
 
 /*
  * Debugging
