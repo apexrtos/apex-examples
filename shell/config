@@ -5,11 +5,14 @@ makeoption COMMON_FLAGS += -g
 makeoption COMMON_FLAGS += -pipe
 makeoption COMMON_FLAGS += -Wall
 makeoption COMMON_FLAGS += -O2
-makeoption COMMON_FLAGS += -flto -fuse-linker-plugin
-makeoption COMMON_FLAGS += -Xlinker --gc-sections
+makeoption COMMON_FLAGS += -flto
+makeoption GCC_FLAGS += -fuse-linker-plugin
+makeoption LDFLAGS += -Wl,--gc-sections
 makeoption CFLAGS += $(CONFIG_COMMON_FLAGS)
+makeoption CFLAGS_gcc += $(CONFIG_GCC_FLAGS)
 makeoption CXXFLAGS += $(CONFIG_COMMON_FLAGS)
-makeoption USER_CFLAGS += -z stack-size=16384
+makeoption CXXFLAGS_gcc += $(CONFIG_GCC_FLAGS)
+makeoption USER_LDFLAGS += -z stack-size=16384
 
 /*
  * Debugging
