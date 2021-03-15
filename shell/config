@@ -20,7 +20,7 @@ makeoption USER_LDFLAGS += -z stack-size=16384
 option SYSLOG_SIZE	    4096
 option DEBUG		    // Print debug messages and turn on debug checks
 option INFO		    // Print informative messages
-// option BOOT_CONSOLE	    // Enable boot console for debug output
+option BOOT_CONSOLE	    // Enable boot console for debug output
 option EARLY_CONSOLE	    // Enable early boot console for debug output
 option EARLY_CONSOLE_CFLAG  (B115200 | CS8)
 // option PRINTF_FLOAT	    // Kernel support for printing floats
