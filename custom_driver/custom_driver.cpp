@@ -16,7 +16,7 @@ static size_t data_len;
  * Copy test data to buffer
  */
 static ssize_t
-read(struct file *file, void *buf, size_t len, off_t offset)
+read(void *buf, size_t len, off_t offset)
 {
 	if (offset >= data_len)
 		return 0;
@@ -26,32 +26,30 @@ read(struct file *file, void *buf, size_t len, off_t offset)
 }
 
 static ssize_t
-read_iov(struct file *file, const struct iovec *iov, size_t count,
-    off_t offset)
+read_iov(file *file, const iovec *iov, size_t count, off_t offset)
 {
-	return for_each_iov(file, iov, count, offset, read);
+	return for_each_iov(iov, count, offset,
+	    [](std::span<std::byte> buf, off_t offset) {
+		return read(buf.data(), buf.size(), offset);
+	});
 }
 
 /*
  * Ignore data written to this driver
  */
 static ssize_t
-write(struct file *file, void *buf, size_t len, off_t offset)
+write_iov(file *file, const iovec *iov, size_t count, off_t offset)
 {
-	return len;
-}
-
-static ssize_t
-write_iov(struct file *file, const struct iovec *iov, size_t count,
-    off_t offset)
-{
-	return for_each_iov(file, iov, count, offset, write);
+	return for_each_iov(iov, count, offset,
+	    [](std::span<std::byte> buf, off_t offset) {
+		return buf.size();
+	});
 }
 
 /*
  * Example ioctl
  */
-int custom_driver_ioctl(struct file *file, u_long cmd, void *arg)
+int custom_driver_ioctl(file *file, u_long cmd, void *arg)
 {
 	switch (cmd) {
 	case CUSTOM_DRIVER_IOC_TEST:
@@ -68,7 +66,7 @@ int custom_driver_ioctl(struct file *file, u_long cmd, void *arg)
 void
 custom_driver_init(const char *str)
 {
-	static struct devio io = {
+	static devio io = {
 		.read = read_iov,
 		.write = write_iov,
 		.ioctl = custom_driver_ioctl,
@@ -77,6 +75,6 @@ custom_driver_init(const char *str)
 	data_len = strlen(str);
 
 	/* Create device object */
-	struct device *d = device_create(&io, "custom", DF_CHR, NULL);
+	device *d = device_create(&io, "custom", DF_CHR, NULL);
 	assert(d);
 }

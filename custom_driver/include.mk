@@ -3,4 +3,4 @@
 #
 
 SOURCES += \
-    $(CONFIG_SRCDIR)/custom_driver/custom_driver.c \
+    $(CONFIG_SRCDIR)/custom_driver/custom_driver.cpp \
