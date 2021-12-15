@@ -69,3 +69,8 @@ bootfile example_program/example_program	// example_program
 option BOOTDEV /dev/bootdisk0
 option BOOTFS arfs
 option INITCMD /boot/init
+
+/*
+ * Include tests
+ */
+mk test/test.mk
